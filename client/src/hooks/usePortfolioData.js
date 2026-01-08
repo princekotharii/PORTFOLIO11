@@ -3,45 +3,77 @@ import { projectAPI, skillAPI, educationAPI, achievementAPI, statusAPI } from '.
 import { fallbackData } from '../data/fallbackData';
 
 export const usePortfolioData = () => {
-  const [data, setData] = useState(fallbackData);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(fallbackData); // ✅ Start with fallback immediately
+  const [loading, setLoading] = useState(false); // ✅ Changed to false so content shows immediately
   const [error, setError] = useState(null);
   const [isBackendAvailable, setIsBackendAvailable] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
+        // Create promises with timeout
+        const timeout = 3000; // 3 seconds timeout
+        
+        const createTimeoutPromise = () => 
+          new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('Request timeout')), timeout)
+          );
 
-        // Fetch all data from API
-        const [projectsRes, skillsRes, educationRes, achievementsRes, statusRes] = await Promise.all([
-          projectAPI.getAll().catch(() => null),
-          skillAPI. getAll().catch(() => null),
-          educationAPI.getAll().catch(() => null),
-          achievementAPI.getAll().catch(() => null),
-          statusAPI.get().catch(() => null),
+        const fetchWithTimeout = (promise) => 
+          Promise.race([promise, createTimeoutPromise()]);
+
+        // Try to fetch from API with timeout
+        const results = await Promise.allSettled([
+          fetchWithTimeout(projectAPI.getAll()),
+          fetchWithTimeout(skillAPI.getAll()),
+          fetchWithTimeout(educationAPI.getAll()),
+          fetchWithTimeout(achievementAPI.getAll()),
+          fetchWithTimeout(statusAPI. get()),
         ]);
 
-        // Check if backend is available
-        const backendAvailable = projectsRes || skillsRes || educationRes || achievementsRes || statusRes;
-        setIsBackendAvailable(!! backendAvailable);
+        const [projectsRes, skillsRes, educationRes, achievementsRes, statusRes] = results;
 
-        // Update data with API responses (fallback to hardcoded data if API fails)
-        setData({
-          hero: fallbackData.hero, // Hero is always from fallback
-          about: fallbackData.about, // About is always from fallback
-          projects: projectsRes?. data?. data?. projects || fallbackData.projects,
-          skills: skillsRes?.data?.data?.skills || fallbackData.skills,
-          education: educationRes?.data?.data?.education || fallbackData.education,
-          achievements: achievementsRes?. data?.data?.achievements || fallbackData.achievements,
-          status: statusRes?.data?.data?.status || fallbackData.status,
-        });
+        // Check if ANY request succeeded
+        const anySucceeded = results.some(result => result.status === 'fulfilled');
+        setIsBackendAvailable(anySucceeded);
+
+        if (anySucceeded) {
+          console.log('✅ Backend connected, using API data where available');
+          
+          // Merge API data with fallback
+          setData({
+            hero: fallbackData.hero, // Always from fallback
+            about: fallbackData.about, // Always from fallback
+            projects: 
+              projectsRes.status === 'fulfilled' && projectsRes.value?. data?. data?. projects
+                ? projectsRes.value. data.data.projects
+                : fallbackData.projects,
+            skills: 
+              skillsRes.status === 'fulfilled' && skillsRes.value?.data?.data?.skills
+                ? skillsRes.value.data.data.skills
+                : fallbackData.skills,
+            education:
+              educationRes.status === 'fulfilled' && educationRes.value?.data?. data?.education
+                ? educationRes.value.data.data. education
+                : fallbackData. education,
+            achievements:
+              achievementsRes.status === 'fulfilled' && achievementsRes.value?.data?.data?.achievements
+                ? achievementsRes. value.data.data.achievements
+                : fallbackData.achievements,
+            status:
+              statusRes.status === 'fulfilled' && statusRes.value?.data?.data?.status
+                ? statusRes. value.data.data.status
+                : fallbackData.status,
+          });
+        } else {
+          console.log('🔴 Backend unavailable, using fallback data');
+          setData(fallbackData);
+        }
 
         setError(null);
       } catch (err) {
-        console.error('Error fetching portfolio data:', err);
+        console.error('❌ Error fetching portfolio data:', err);
         setError(err.message);
-        // Use fallback data on error
         setData(fallbackData);
         setIsBackendAvailable(false);
       } finally {
