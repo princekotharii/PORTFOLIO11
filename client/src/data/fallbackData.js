@@ -219,7 +219,7 @@ export const fallbackData = {
 
   // Profile Status
   status: {
-    hireable: true,
+    hireable: false,
     availableForWork: true,
     currentStatus: "Available",
     statusMessage: "Open to freelance opportunities and full-time positions"

@@ -33,7 +33,7 @@ const Home = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window. addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -81,34 +81,17 @@ const Home = () => {
       
       <main>
         <Hero data={data. hero} />
-        <About data={data. about} isVisible={visibleSections.has('about')} />
+        <About data={data.about} isVisible={visibleSections.has('about')} />
         <Skills data={data.skills} isVisible={visibleSections.has('skills')} />
         <Projects data={data.projects} isVisible={visibleSections.has('projects')} />
         <Education data={data.education} isVisible={visibleSections.has('education')} />
         <Achievements data={data.achievements} isVisible={visibleSections. has('achievements')} />
-        <Contact data={data.hero} isVisible={visibleSections.has('contact')} />
+        <Contact data={data.hero} isVisible={visibleSections. has('contact')} />
       </main>
 
       <Footer />
 
-      {/* Backend Status Indicator (Development Only) */}
-      {process.env.NODE_ENV === 'development' && (
-        <div style={{
-          position: 'fixed',
-          bottom: '20px',
-          left: '20px',
-          padding: '0. 5rem 1rem',
-          background: isBackendAvailable ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)',
-          border: `1px solid ${isBackendAvailable ? '#10b981' : '#ef4444'}`,
-          borderRadius: '8px',
-          color: isBackendAvailable ? '#10b981' : '#ef4444',
-          fontSize: '0.75rem',
-          fontWeight: '600',
-          zIndex: 9999
-        }}>
-          {isBackendAvailable ? '🟢 Backend Connected' : '🔴 Using Fallback Data'}
-        </div>
-      )}
+      {/* ✅ REMOVED: Backend Status Indicator Badge */}
     </div>
   );
 };
