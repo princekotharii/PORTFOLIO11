@@ -1,0 +1,333 @@
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 6rem 0 4rem;
+}
+
+/* Animated Background */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.hero-gradient-1,
+.hero-gradient-2,
+.hero-gradient-3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3;
+  animation: float 15s ease-in-out infinite;
+}
+
+.hero-gradient-1 {
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(to right, #a855f7, #ec4899);
+  top: -250px;
+  left: -250px;
+}
+
+.hero-gradient-2 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(to right, #3b82f6, #06b6d4);
+  bottom: -200px;
+  right: -200px;
+  animation-delay: 2s;
+}
+
+.hero-gradient-3 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(to right, #10b981, #14b8a6);
+  top: 50%;
+  right: 10%;
+  animation-delay: 4s;
+}
+
+/* Grid Pattern */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(168, 85, 247, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -1;
+}
+
+/* Hero Content */
+.hero-content {
+  max-width: 900px;
+  text-align:  center;
+  z-index:  1;
+  padding: 0 1. 5rem;
+  animation: fadeIn 1s ease;
+}
+
+/* Badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  background: rgba(168, 85, 247, 0.1);
+  border:  1px solid var(--color-border);
+  border-radius: 999px;
+  font-size:  0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+  animation: slideIn 1s ease 0.2s both;
+}
+
+/* Heading */
+.hero-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  animation: slideIn 1s ease 0.4s both;
+}
+
+.hero-greeting {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.hero-name {
+  font-size: clamp(2. 5rem, 7vw, 5rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* Typing Effect */
+.hero-typing {
+  margin-bottom: 1.5rem;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slideIn 1s ease 0.6s both;
+}
+
+.hero-typing-text {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  margin: 0;
+}
+
+.hero-cursor {
+  color: var(--color-primary);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Description */
+.hero-description {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: slideIn 1s ease 0.8s both;
+}
+
+/* CTA Buttons */
+.hero-cta {
+  display:  flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+  animation: slideIn 1s ease 1s both;
+}
+
+.hero-btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.hero-btn-primary:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Social Links */
+.hero-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  animation: slideIn 1s ease 1.2s both;
+}
+
+.hero-social-title {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin:  0;
+}
+
+.hero-social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.hero-social-link:hover {
+  background: rgba(168, 85, 247, 0.1);
+  border-color: var(--color-primary);
+  color: var(--hover-color, var(--color-primary));
+  transform: translateY(-3px);
+}
+
+/* Stats */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  max-width: 600px;
+  margin:  0 auto;
+  animation: slideIn 1s ease 1.4s both;
+}
+
+.hero-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.hero-stat-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-5px);
+}
+
+.stat-card-purple:hover {
+  border-color: #10b981;
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2);
+}
+
+.stat-card-orange:hover {
+  border-color: #f97316;
+  box-shadow: 0 8px 30px rgba(249, 115, 22, 0.2);
+}
+
+.stat-card-blue:hover {
+  border-color: #3b82f6;
+  box-shadow:  0 8px 30px rgba(59, 130, 246, 0.2);
+}
+
+.stat-icon {
+  transition: transform 0.3s ease;
+}
+
+.hero-stat-card:hover .stat-icon {
+  transform: scale(1.1);
+}
+
+.hero-stat-card p {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* Scroll Indicator */
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+  animation: slideIn 1s ease 1.6s both;
+}
+
+.hero-scroll:hover {
+  color: var(--color-primary);
+}
+
+.hero-scroll-icon {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+/* Responsive */
+@media (max-width:  768px) {
+  .hero {
+    padding: 5rem 0 3rem;
+  }
+
+  .hero-cta {
+    flex-direction:  column;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+}

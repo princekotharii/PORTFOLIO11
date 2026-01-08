@@ -1,0 +1,249 @@
+/* ============================================
+   EDUCATION SECTION
+   ============================================ */
+
+.education-section {
+  padding: 6rem 0;
+  position: relative;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.education-section.visible {
+  opacity: 1;
+  transform:  translateY(0);
+}
+
+.section-divider-blue {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #3b82f6, #06b6d4);
+  margin: 0 auto;
+  border-radius: 999px;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom:  0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 30px;
+  }
+}
+
+/* Timeline Item */
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.timeline-item-left {
+  justify-content: flex-end;
+  padding-right: calc(50% + 40px);
+}
+
+.timeline-item-right {
+  justify-content: flex-start;
+  padding-left: calc(50% + 40px);
+}
+
+@media (max-width: 768px) {
+  .timeline-item-left,
+  .timeline-item-right {
+    padding-left: 70px;
+    padding-right: 0;
+    justify-content: flex-start;
+  }
+}
+
+/* Timeline Dot */
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  background: var(--color-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .timeline-dot {
+    left: 30px;
+  }
+}
+
+.timeline-dot-inner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+/* Education Card */
+.education-card {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+}
+
+.education-card-glow {
+  position: absolute;
+  inset: -10px;
+  border-radius: 20px;
+  filter: blur(30px);
+  opacity: 0.2;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.education-card:hover .education-card-glow {
+  opacity: 0.4;
+}
+
+.education-card-inner {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.education-card:hover .education-card-inner {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Education Content */
+.education-content {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.education-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  color: white;
+  flex-shrink:  0;
+}
+
+.education-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Education Header */
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.education-title-section {
+  flex: 1;
+}
+
+.education-degree {
+  font-size: 1.25rem;
+  font-weight:  700;
+  color: var(--color-text);
+  margin: 0 0 0.25rem;
+}
+
+.education-field {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  margin: 0 0 0.5rem;
+}
+
+.education-institution {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin: 0 0 0.5rem;
+}
+
+.education-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.education-location,
+.education-duration {
+  display: flex;
+  align-items: center;
+  gap:  0.25rem;
+}
+
+.education-grade {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  font-weight:  600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Education Description */
+.education-description {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Education Highlights */
+.education-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.education-highlight {
+  padding: 0.5rem 0. 75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
