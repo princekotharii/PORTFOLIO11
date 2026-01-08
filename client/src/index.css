@@ -6,13 +6,13 @@
 
 :root {
   --color-primary: #a855f7;
-  --color-secondary: #ec4899;
-  --color-accent: #3b82f6;
+  --color-secondary: #1320dd;
+  --color-accent: #0b81e0;
   --color-bg: #000000;
   --color-surface: #0a0a0a;
   --color-text: #ffffff;
   --color-text-muted: #9ca3af;
-  --color-border: rgba(168, 85, 247, 0.2);
+  --color-border: rgba(238, 11, 11, 0.2);
   
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
