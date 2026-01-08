@@ -1,4 +1,5 @@
-import { Code, Award, Users, Trophy, Heart, MapPin, Mail, Phone, Zap, Target } from 'lucide-react';
+import { useState } from 'react';
+import { User, MapPin, Mail, Phone, Download, Award, Code, Heart, Target, Zap, Trophy, Users, Briefcase } from 'lucide-react';
 import './About.css';
 
 const About = ({ data, isVisible }) => {
@@ -6,171 +7,160 @@ const About = ({ data, isVisible }) => {
     Zap,
     Target,
     Heart,
-    Code
+    Code,
+    Award,
+    Trophy,
+    Users,
+    Briefcase
   };
 
-  const stats = data?.stats || [
-    { icon: 'Code', value: '50+', label: 'Projects', color: '#a855f7' },
-    { icon: 'Award', value:  '10+', label: 'Certificates', color: '#3b82f6' },
-    { icon: 'Users', value: '500+', label: 'Commits', color: '#10b981' },
-    { icon: 'Trophy', value: '5+', label: 'Hackathons', color: '#f97316' }
-  ];
-
-  const statsIconMap = { Code, Award, Users, Trophy };
-  
-  const highlights = data?.highlights || [
-    { icon: 'Zap', text: 'Fast Learner', color: '#eab308' },
-    { icon: 'Target', text: 'Goal Oriented', color: '#10b981' },
-    { icon: 'Heart', text: 'Passionate', color: '#ec4899' },
-    { icon: 'Code', text: 'Clean Coder', color: '#3b82f6' }
-  ];
+  const highlights = data?. highlights || [];
+  const stats = data?.stats || [];
 
   return (
     <section id="about" className={`about-section ${isVisible ? 'visible' : ''}`}>
-      {/* Background */}
       <div className="section-bg"></div>
       
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
           <div className="section-badge">
-            <span>Get To Know Me</span>
+            <User size={16} />
+            <span>Get to Know Me</span>
           </div>
           <h2 className="section-title">
-            <span className="gradient-text">About Me</span>
+            <span className="gradient-text-blue">About Me</span>
           </h2>
-          <div className="section-divider"></div>
+          <div className="section-divider-blue"></div>
         </div>
-        
-        <div className="about-grid">
-          {/* Left:  Profile Card */}
-          <div className="about-profile">
-            <div className="profile-card-glow"></div>
-            
-            <div className="profile-card">
-              {/* Decorative Elements */}
-              <div className="profile-decoration profile-decoration-1"></div>
-              <div className="profile-decoration profile-decoration-2"></div>
-              
-              <div className="profile-content">
-                {/* Profile Image */}
-                <div className="profile-image">
-                  <div className="profile-image-inner">
-                    <div className="profile-avatar">
-                      <span className="profile-emoji">{data?.image || '👨‍💻'}</span>
-                    </div>
-                    <p className="profile-label">{data?.name || 'Your Name'}</p>
-                    <p className="profile-username">@yourusername</p>
-                  </div>
-                </div>
-                
-                {/* Contact Info */}
-                <div className="contact-info">
-                  <div className="contact-item">
-                    <div className="contact-icon contact-icon-purple">
-                      <MapPin size={20} />
-                    </div>
-                    <div className="contact-text">
-                      <p className="contact-label">Location</p>
-                      <p className="contact-value">{data?.location || 'Your City, Country'}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="contact-item">
-                    <div className="contact-icon contact-icon-blue">
-                      <Mail size={20} />
-                    </div>
-                    <div className="contact-text">
-                      <p className="contact-label">Email</p>
-                      <p className="contact-value">{data?.email || 'your. email@example.com'}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="contact-item">
-                    <div className="contact-icon contact-icon-green">
-                      <Phone size={20} />
-                    </div>
-                    <div className="contact-text">
-                      <p className="contact-label">Phone</p>
-                      <p className="contact-value">{data?.phone || '+1 234 567 8900'}</p>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Highlights */}
-                <div className="profile-highlights">
+        {/* About Content */}
+        <div className="about-content">
+          {/* Left Side - Profile Picture & Info */}
+          <div className="about-left">
+            {/* Profile Picture with Decorative Frame */}
+            <div className="profile-wrapper">
+              <div className="profile-decoration-1"></div>
+              <div className="profile-decoration-2"></div>
+              <div className="profile-image-container">
+                <div className="profile-image-wrapper">
+                  {data?.profileImage ?  (
+                    <img
+                      src={data.profileImage}
+                      alt={data?. name || 'Profile'}
+                      className="profile-image"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                  ) : null}
+                  <div className="profile-placeholder" style={{ display: data?.profileImage ? 'none' : 'flex' }}>
+                    <User size={80} />
+                  </div>
+                </div>
+                <div className="profile-status">
+                  <span className="status-dot"></span>
+                  Available for work
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Info Cards */}
+            <div className="contact-info-cards">
+              {data?.location && (
+                <div className="info-card">
+                  <div className="info-icon" style={{ background: 'rgba(168, 85, 247, 0.1)' }}>
+                    <MapPin size={20} style={{ color: '#a855f7' }} />
+                  </div>
+                  <div className="info-text">
+                    <span className="info-label">Location</span>
+                    <span className="info-value">{data. location}</span>
+                  </div>
+                </div>
+              )}
+              
+              {data?.email && (
+                <div className="info-card">
+                  <div className="info-icon" style={{ background:  'rgba(59, 130, 246, 0.1)' }}>
+                    <Mail size={20} style={{ color: '#3b82f6' }} />
+                  </div>
+                  <div className="info-text">
+                    <span className="info-label">Email</span>
+                    <span className="info-value">{data.email}</span>
+                  </div>
+                </div>
+              )}
+              
+              {data?.phone && (
+                <div className="info-card">
+                  <div className="info-icon" style={{ background:  'rgba(16, 185, 129, 0.1)' }}>
+                    <Phone size={20} style={{ color: '#10b981' }} />
+                  </div>
+                  <div className="info-text">
+                    <span className="info-label">Phone</span>
+                    <span className="info-value">{data.phone}</span>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Download Resume Button */}
+            <a href="/resume.pdf" download className="btn btn-primary download-cv-btn">
+              <Download size={20} />
+              Download Resume
+            </a>
+          </div>
+
+          {/* Right Side - Description & Highlights */}
+          <div className="about-right">
+            {/* Description */}
+            <div className="about-description">
+              <h3 className="about-subtitle">Who I Am</h3>
+              <p className="about-text">
+                {data?.description || 'Full-stack developer passionate about creating elegant solutions to complex problems. '}
+              </p>
+            </div>
+
+            {/* Highlights */}
+            {highlights.length > 0 && (
+              <div className="about-highlights">
+                <h3 className="about-subtitle">What I Bring</h3>
+                <div className="highlights-grid">
                   {highlights.map((highlight, idx) => {
-                    const Icon = iconMap[highlight.icon];
+                    const Icon = iconMap[highlight.icon] || Code;
                     return (
-                      <div key={idx} className="profile-highlight" style={{ '--highlight-color': highlight.color }}>
-                        {Icon && <Icon size={20} />}
-                        <span>{highlight.text}</span>
+                      <div key={idx} className="highlight-card">
+                        <div className="highlight-icon" style={{ color: highlight.color }}>
+                          <Icon size={24} />
+                        </div>
+                        <span className="highlight-text">{highlight.text}</span>
                       </div>
                     );
                   })}
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Right: About Content */}
-          <div className="about-content">
-            <div className="about-text">
-              <h3 className="about-subtitle">Who am I?</h3>
-              <p className="about-description">
-                {data?.description || 'Passionate full-stack developer with expertise in MERN stack. I love creating seamless user experiences and robust backend systems. Always eager to learn new technologies and solve complex problems.'}
-              </p>
-              
-              <div className="about-features">
-                <div className="about-feature">
-                  <div className="feature-icon feature-icon-purple">
-                    <Code size={24} />
-                  </div>
-                  <div className="feature-text">
-                    <h4>Clean Code</h4>
-                    <p>Writing maintainable and scalable code</p>
-                  </div>
-                </div>
-
-                <div className="about-feature">
-                  <div className="feature-icon feature-icon-blue">
-                    <Zap size={24} />
-                  </div>
-                  <div className="feature-text">
-                    <h4>Fast Performance</h4>
-                    <p>Optimized for speed and efficiency</p>
-                  </div>
-                </div>
-
-                <div className="about-feature">
-                  <div className="feature-icon feature-icon-green">
-                    <Target size={24} />
-                  </div>
-                  <div className="feature-text">
-                    <h4>Goal Oriented</h4>
-                    <p>Focused on delivering results</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            )}
 
             {/* Stats */}
-            <div className="about-stats">
-              {stats.map((stat, idx) => {
-                const Icon = statsIconMap[stat.icon];
-                return (
-                  <div key={idx} className="about-stat-card" style={{ '--stat-color': stat.color }}>
-                    <div className="stat-icon-wrapper">
-                      {Icon && <Icon size={32} />}
+            {stats.length > 0 && (
+              <div className="about-stats">
+                {stats.map((stat, idx) => {
+                  const Icon = iconMap[stat.icon] || Code;
+                  return (
+                    <div key={idx} className="stat-card">
+                      <div className="stat-icon" style={{ color: stat.color }}>
+                        <Icon size={32} />
+                      </div>
+                      <div className="stat-content">
+                        <h4 className="stat-value">{stat.value}</h4>
+                        <p className="stat-label">{stat.label}</p>
+                      </div>
                     </div>
-                    <div className="stat-content">
-                      <p className="stat-value">{stat.value}</p>
-                      <p className="stat-label">{stat.label}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </div>

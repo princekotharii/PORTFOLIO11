@@ -1,19 +1,20 @@
 import { useState, useEffect } from 'react';
-import { X, Plus } from 'lucide-react';
+import { X, Plus, Trash2 } from 'lucide-react';
 import { projectAPI } from '../../services/api';
 
 const ProjectForm = ({ item, onClose }) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    longDescription: '',
+    longDescription:  '',
     techStack: [],
     category: 'Full Stack',
-    githubLink:  '',
+    githubLink: '',
     liveLink: '',
-    image: '🚀',
+    image: '', // ✅ Image URL field
     featured: false,
-    status: 'Completed'
+    status: 'Completed',
+    order: 0
   });
   const [techInput, setTechInput] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,9 +31,9 @@ const ProjectForm = ({ item, onClose }) => {
 
     try {
       if (item) {
-        await projectAPI.update(item._id, formData);
+        await projectAPI. update(item._id, formData);
       } else {
-        await projectAPI. create(formData);
+        await projectAPI.create(formData);
       }
       onClose();
     } catch (error) {
@@ -44,15 +45,15 @@ const ProjectForm = ({ item, onClose }) => {
   };
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const value = e.target.type === 'checkbox' ? e. target.checked : e.target. value;
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : value
+      [e.target.name]: value
     });
   };
 
   const addTech = () => {
-    if (techInput.trim()) {
+    if (techInput.trim() && !formData.techStack. includes(techInput.trim())) {
       setFormData({
         ...formData,
         techStack: [...formData.techStack, techInput.trim()]
@@ -61,10 +62,10 @@ const ProjectForm = ({ item, onClose }) => {
     }
   };
 
-  const removeTech = (index) => {
+  const removeTech = (tech) => {
     setFormData({
       ...formData,
-      techStack: formData.techStack.filter((_, i) => i !== index)
+      techStack: formData.techStack.filter(t => t !== tech)
     });
   };
 
@@ -93,6 +94,60 @@ const ProjectForm = ({ item, onClose }) => {
             />
           </div>
 
+          <div className="form-group">
+            <label htmlFor="image" className="form-label">Image URL *</label>
+            <input
+              type="url"
+              id="image"
+              name="image"
+              value={formData.image}
+              onChange={handleChange}
+              required
+              className="form-input"
+              placeholder="https://images.unsplash.com/photo-..."
+            />
+            <small style={{ color: 'var(--color-text-muted)', fontSize: '0.75rem', marginTop: '0.25rem', display: 'block' }}>
+              Use Unsplash, Imgur, or any direct image URL
+            </small>
+            {formData.image && (
+              <div style={{ marginTop: '0.5rem' }}>
+                <img 
+                  src={formData. image} 
+                  alt="Preview" 
+                  style={{ width: '100%', maxHeight: '200px', objectFit: 'cover', borderRadius: '8px' }}
+                  onError={(e) => e.target.style.display = 'none'}
+                />
+              </div>
+            )}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="description" className="form-label">Short Description *</label>
+            <textarea
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              required
+              rows="2"
+              className="form-textarea"
+              placeholder="Brief description for card view"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="longDescription" className="form-label">Detailed Description</label>
+            <textarea
+              id="longDescription"
+              name="longDescription"
+              value={formData.longDescription}
+              onChange={handleChange}
+              rows="4"
+              className="form-textarea"
+              placeholder="Detailed description for modal view"
+            />
+          </div>
+
           <div className="form-grid form-grid-2">
             <div className="form-group">
               <label htmlFor="category" className="form-label">Category *</label>
@@ -104,69 +159,43 @@ const ProjectForm = ({ item, onClose }) => {
                 required
                 className="form-input"
               >
+                <option value="Full Stack">Full Stack</option>
                 <option value="Frontend">Frontend</option>
                 <option value="Backend">Backend</option>
-                <option value="Full Stack">Full Stack</option>
                 <option value="Mobile">Mobile</option>
                 <option value="Other">Other</option>
               </select>
             </div>
 
             <div className="form-group">
-              <label htmlFor="status" className="form-label">Status</label>
+              <label htmlFor="status" className="form-label">Status *</label>
               <select
                 id="status"
                 name="status"
                 value={formData.status}
                 onChange={handleChange}
+                required
                 className="form-input"
               >
                 <option value="Completed">Completed</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Planned">Planned</option>
+                <option value="InProgress">In Progress</option>
+                <option value="Planning">Planning</option>
               </select>
             </div>
           </div>
 
           <div className="form-group">
-            <label htmlFor="description" className="form-label">Short Description *</label>
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              required
-              rows="3"
-              className="form-textarea"
-              placeholder="Brief description of your project"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="longDescription" className="form-label">Long Description</label>
-            <textarea
-              id="longDescription"
-              name="longDescription"
-              value={formData.longDescription}
-              onChange={handleChange}
-              rows="4"
-              className="form-textarea"
-              placeholder="Detailed description (optional)"
-            />
-          </div>
-
-          <div className="form-group">
             <label className="form-label">Tech Stack *</label>
-            <div className="tech-stack-input">
-              {formData.techStack. map((tech, index) => (
-                <div key={index} className="tech-tag-item">
+            <div className="tech-stack-list">
+              {formData.techStack.map((tech, index) => (
+                <div key={index} className="tech-stack-item">
                   <span>{tech}</span>
                   <button
                     type="button"
-                    onClick={() => removeTech(index)}
-                    className="remove-tag-btn"
+                    onClick={() => removeTech(tech)}
+                    className="remove-tech-btn"
                   >
-                    <X size={14} />
+                    <Trash2 size={14} />
                   </button>
                 </div>
               ))}
@@ -209,35 +238,21 @@ const ProjectForm = ({ item, onClose }) => {
                 value={formData.liveLink}
                 onChange={handleChange}
                 className="form-input"
-                placeholder="https://..."
+                placeholder="https://demo.vercel.app"
               />
             </div>
           </div>
 
-          <div className="form-grid form-grid-2">
-            <div className="form-group">
-              <label htmlFor="image" className="form-label">Emoji/Icon</label>
-              <input
-                type="text"
-                id="image"
-                name="image"
-                value={formData. image}
-                onChange={handleChange}
-                className="form-input"
-                placeholder="🚀"
-              />
-            </div>
-
-            <div className="checkbox-group">
+          <div className="form-group">
+            <label className="form-checkbox">
               <input
                 type="checkbox"
-                id="featured"
                 name="featured"
-                checked={formData.featured}
+                checked={formData. featured}
                 onChange={handleChange}
               />
-              <label htmlFor="featured">Featured Project</label>
-            </div>
+              <span>Mark as Featured Project</span>
+            </label>
           </div>
 
           <div className="form-actions">

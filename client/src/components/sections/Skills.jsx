@@ -1,25 +1,16 @@
 import { Code, Terminal, Globe, Wrench, Layers, Database, Boxes } from 'lucide-react';
 import { 
-  // React & JavaScript
-  FaReact, FaJs, FaHtml5, FaCss3Alt, FaNodeJs, FaPython, FaJava, FaGitAlt, FaGithub, FaDocker, FaAws,
-  // Databases & Tools
-  FaDatabase, FaNpm, FaFigma, FaSlack,
-  // Other
-  FaCode
+  FaReact, FaJs, FaHtml5, FaCss3Alt, FaNodeJs, FaPython, FaJava, 
+  FaGitAlt, FaGithub, FaDocker, FaAws, FaDatabase, FaNpm, FaFigma, FaCode
 } from 'react-icons/fa';
 import { 
-  // Modern frameworks & tools
-  SiTypescript, SiRedux, SiTailwindcss, SiNextdotjs, SiExpress, SiMongodb, SiMysql, SiPostgresql,
-  SiPostman, SiVisualstudiocode, SiVercel, SiNetlify, SiFirebase, SiVite, SiWebpack,
-  SiMui, // ✅ FIXED: Changed from SiMaterialui to SiMui
-  SiBootstrap, SiSass, SiGraphql, SiRedis, SiDocker, SiKubernetes,
-  SiJest, SiCypress, SiJenkins, SiGit, SiNginx, SiLinux, SiUbuntu, SiWindows,
-  SiAndroid, SiIos, SiReactrouter, SiFramer, SiStyledcomponents, SiSocketdotio,
-  SiJquery, SiAngular, SiVuedotjs, SiFlutter, SiDart, SiCplusplus, SiC, SiPhp,
-  SiDjango, SiFlask, SiLaravel, SiSpring, SiRabbitmq, SiElasticsearch, SiSwagger,
-  SiJira, SiTrello, SiNotion, SiMarkdown, SiYarn, SiPnpm
+  SiTypescript, SiRedux, SiTailwindcss, SiNextdotjs, SiExpress, 
+  SiMongodb, SiMysql, SiPostgresql, SiPostman, SiVercel, SiNetlify, 
+  SiFirebase, SiVite, SiWebpack, SiBootstrap, SiSass, SiGraphql, 
+  SiRedis, SiJest, SiJenkins, SiNginx, SiLinux, SiAndroid, 
+  SiFlutter, SiDjango, SiFlask, SiLaravel, SiSwagger, SiJira, 
+  SiTrello, SiNotion, SiMarkdown, SiYarn
 } from 'react-icons/si';
-import { TbBrandCpp, TbBrandReactNative } from 'react-icons/tb';
 import './Skills.css';
 
 const Skills = ({ data, isVisible }) => {
@@ -33,10 +24,10 @@ const Skills = ({ data, isVisible }) => {
     Boxes
   };
 
-  // Technology Icons Mapping
+  // Simplified Technology Icons Mapping - ONLY WORKING ICONS
   const techIconMap = {
     // Frontend
-    'React.js': FaReact,
+    'React. js': FaReact,
     'React':  FaReact,
     'JavaScript': FaJs,
     'JS': FaJs,
@@ -50,57 +41,41 @@ const Skills = ({ data, isVisible }) => {
     'TailwindCSS': SiTailwindcss,
     'Redux': SiRedux,
     'Next.js': SiNextdotjs,
-    'Material-UI': SiMui, // ✅ FIXED:  Using SiMui
-    'MUI': SiMui, // ✅ FIXED:  Using SiMui
     'Bootstrap': SiBootstrap,
     'Sass': SiSass,
     'SCSS': SiSass,
-    'jQuery': SiJquery,
-    'Angular': SiAngular,
-    'Vue.js': SiVuedotjs,
-    'Vue':  SiVuedotjs,
-    'Styled Components': SiStyledcomponents,
-    'Framer Motion': SiFramer,
-    'React Router': SiReactrouter,
     
     // Backend
     'Node. js': FaNodeJs,
     'Node': FaNodeJs,
-    'Express. js': SiExpress,
+    'Express.js':  SiExpress,
     'Express': SiExpress,
     'MongoDB': SiMongodb,
     'MySQL': SiMysql,
     'PostgreSQL': SiPostgresql,
-    'GraphQL': SiGraphql,
+    'GraphQL':  SiGraphql,
     'Redis': SiRedis,
-    'Socket.io': SiSocketdotio,
     'REST API': FaCode,
     'REST APIs': FaCode,
     'Django': SiDjango,
-    'Flask': SiFlask,
+    'Flask':  SiFlask,
     'Laravel': SiLaravel,
-    'Spring': SiSpring,
-    'RabbitMQ': SiRabbitmq,
-    'Elasticsearch': SiElasticsearch,
     'Firebase': SiFirebase,
     
     // Languages
     'Python': FaPython,
-    'Java':  FaJava,
-    'C++': TbBrandCpp,
-    'C': SiC,
-    'PHP': SiPhp,
-    'Dart': SiDart,
+    'Java': FaJava,
+    'C++': FaCode,
+    'C':  FaCode,
     
     // Tools & DevOps
     'Git': FaGitAlt,
-    'GitHub': FaGithub,
+    'GitHub':  FaGithub,
     'Git & GitHub': FaGithub,
-    'VS Code': SiVisualstudiocode,
-    'VSCode': SiVisualstudiocode,
+    'VS Code': FaCode,
+    'VSCode': FaCode,
     'Postman': SiPostman,
     'Docker': FaDocker,
-    'Kubernetes': SiKubernetes,
     'AWS': FaAws,
     'Vercel': SiVercel,
     'Netlify': SiNetlify,
@@ -108,41 +83,33 @@ const Skills = ({ data, isVisible }) => {
     'Webpack': SiWebpack,
     'NPM': FaNpm,
     'Yarn': SiYarn,
-    'pnpm': SiPnpm,
     'Jest': SiJest,
-    'Cypress': SiCypress,
     'Jenkins': SiJenkins,
     'Nginx': SiNginx,
-    'Linux': SiLinux,
-    'Ubuntu': SiUbuntu,
-    'Windows': SiWindows,
+    'Linux':  SiLinux,
     'Figma': FaFigma,
     'Swagger': SiSwagger,
     'Jira': SiJira,
     'Trello': SiTrello,
     'Notion': SiNotion,
-    'Markdown':  SiMarkdown,
+    'Markdown': SiMarkdown,
     
     // Mobile
-    'React Native': TbBrandReactNative,
+    'React Native': FaReact,
     'Flutter': SiFlutter,
     'Android': SiAndroid,
-    'iOS': SiIos,
     
-    // Database (generic)
+    // Database
     'Database': FaDatabase,
   };
 
   const skillCategories = data || [];
 
-  // Function to get icon for a skill
   const getSkillIcon = (skillName) => {
-    // Try exact match first
     if (techIconMap[skillName]) {
       return techIconMap[skillName];
     }
     
-    // Try case-insensitive match
     const normalizedName = skillName.toLowerCase();
     for (const [key, icon] of Object.entries(techIconMap)) {
       if (key.toLowerCase() === normalizedName) {
@@ -150,14 +117,12 @@ const Skills = ({ data, isVisible }) => {
       }
     }
     
-    // Try partial match
-    for (const [key, icon] of Object.entries(techIconMap)) {
-      if (normalizedName.includes(key. toLowerCase()) || key.toLowerCase().includes(normalizedName)) {
+    for (const [key, icon] of Object. entries(techIconMap)) {
+      if (normalizedName.includes(key.toLowerCase()) || key.toLowerCase().includes(normalizedName)) {
         return icon;
       }
     }
     
-    // Default icon
     return FaCode;
   };
 
@@ -166,7 +131,6 @@ const Skills = ({ data, isVisible }) => {
       <div className="section-bg"></div>
       
       <div className="container">
-        {/* Section Header */}
         <div className="section-header">
           <div className="section-badge">
             <Layers size={16} />
@@ -181,22 +145,20 @@ const Skills = ({ data, isVisible }) => {
           </p>
         </div>
         
-        {/* Skills Categories Grid */}
         <div className="skills-categories-grid">
           {skillCategories.map((category, catIdx) => {
-            const CategoryIcon = categoryIconMap[category. icon] || Code;
+            const CategoryIcon = categoryIconMap[category.icon] || Code;
             return (
               <div 
                 key={catIdx} 
                 className="skill-category-card"
-                style={{ animationDelay: `${catIdx * 0.1}s` }}
+                style={{ animationDelay:  `${catIdx * 0.1}s` }}
               >
-                {/* Category Header */}
                 <div className="skill-category-header-new">
                   <div 
                     className="skill-category-icon-wrapper" 
                     style={{ 
-                      background: `linear-gradient(135deg, ${category.color}20, ${category.color}40)`,
+                      background: `linear-gradient(135deg, ${category. color}20, ${category.color}40)`,
                       borderColor: category.color 
                     }}
                   >
@@ -208,15 +170,13 @@ const Skills = ({ data, isVisible }) => {
                   </div>
                 </div>
 
-                {/* Skills Grid */}
                 <div className="skills-grid-new">
-                  {category.items.map((skill, skillIdx) => {
-                    const SkillIcon = getSkillIcon(skill. name);
+                  {category. items.map((skill, skillIdx) => {
+                    const SkillIcon = getSkillIcon(skill.name);
                     return (
                       <div key={skillIdx} className="skill-badge">
                         <div className="skill-badge-content">
-                          {/* Skill Icon */}
-                          <div className="skill-icon" style={{ color: category.color }}>
+                          <div className="skill-icon" style={{ color: category. color }}>
                             <SkillIcon size={28} />
                           </div>
                           

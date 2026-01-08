@@ -14,24 +14,24 @@ export const fallbackData = {
 
   // About Section
   about: {
-    description: "Passionate full-stack developer with expertise in MERN stack.  I love creating seamless user experiences and robust backend systems.  Always eager to learn new technologies and solve complex problems.",
-    image: "👨‍💻",
-    location: "Your City, Country",
-    email: "your.email@example.com",
-    phone: "+1 234 567 8900",
-    highlights: [
-      { icon: "Zap", text: "Fast Learner", color: "#eab308" },
-      { icon: "Target", text: "Goal Oriented", color: "#10b981" },
-      { icon: "Heart", text: "Passionate", color: "#ec4899" },
-      { icon: "Code", text: "Clean Coder", color: "#3b82f6" }
-    ],
-    stats: [
-      { icon: "Code", value: "50+", label: "Projects", color: "#a855f7" },
-      { icon: "Award", value: "10+", label: "Certificates", color: "#3b82f6" },
-      { icon: "Users", value:  "500+", label: "Commits", color: "#10b981" },
-      { icon: "Trophy", value: "5+", label: "Hackathons", color: "#f97316" }
-    ]
-  },
+  profileImage: "https://avatars.githubusercontent.com/u/197196645?v=4", // ✅ Add your GitHub profile pic or any image URL
+  description: "Passionate full-stack developer with expertise in MERN stack.  I love creating seamless user experiences and robust backend systems. Always eager to learn new technologies and solve complex problems.",
+  location: "Mumbai, India",
+  email: "princekothari016@gmail.com",
+  phone: "+91 98765 43210",
+  highlights: [
+    { icon: "Zap", text: "Fast Learner", color: "#eab308" },
+    { icon: "Target", text: "Goal Oriented", color: "#10b981" },
+    { icon: "Heart", text: "Passionate", color: "#ec4899" },
+    { icon: "Code", text: "Clean Coder", color: "#3b82f6" }
+  ],
+  stats: [
+    { icon: "Code", value: "50+", label: "Projects", color: "#a855f7" },
+    { icon: "Award", value: "10+", label: "Certificates", color: "#3b82f6" },
+    { icon: "Users", value:  "500+", label: "Commits", color: "#10b981" },
+    { icon: "Trophy", value: "5+", label: "Hackathons", color: "#f97316" }
+  ]
+},
 
   // Skills Section
   skills: [
@@ -95,47 +95,49 @@ export const fallbackData = {
 
   // Projects Section
   projects: [
-    {
-      _id: "1",
-      title: "Portfolio Website",
-      description: "A modern MERN stack portfolio with admin panel and dynamic content management",
-      longDescription: "Full-featured portfolio website with backend API, admin authentication, and real-time content updates. Built with React, Node. js, Express, and MongoDB.",
-      techStack: ["React", "Node. js", "MongoDB", "Express", "Tailwind CSS"],
-      category: "Full Stack",
-      githubLink: "https://github.com/yourusername/portfolio",
-      liveLink: "https://yourportfolio.vercel.app",
-      image: "🚀",
-      featured: true,
-      status: "Completed",
-      order: 1
-    },
-    {
-      _id: "2",
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with payment integration",
-      techStack: ["React", "Redux", "Node.js", "MongoDB", "Stripe"],
-      category: "Full Stack",
-      githubLink:  "https://github.com/yourusername/ecommerce",
-      liveLink: "https://ecommerce-demo.vercel.app",
-      image: "🛒",
-      featured: true,
-      status: "Completed",
-      order: 2
-    },
-    {
-      _id: "3",
-      title: "Task Management App",
-      description: "Collaborative task management tool with real-time updates",
-      techStack: ["React", "Firebase", "Material-UI"],
-      category: "Frontend",
-      githubLink: "https://github.com/yourusername/task-app",
-      liveLink: "https://task-app-demo.vercel.app",
-      image: "📋",
-      featured: false,
-      status: "Completed",
-      order: 3
-    }
-  ],
+  {
+    _id: "1",
+    title: "Portfolio Website",
+    description: "A modern MERN stack portfolio with admin panel and dynamic content management",
+    longDescription: "Full-featured portfolio website with backend API, admin authentication, and real-time content updates. Built with React, Node. js, Express, and MongoDB. Features include dynamic content management, admin panel, responsive design, and smooth animations.",
+    techStack: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
+    category: "Full Stack",
+    githubLink: "https://github.com/princekotharii/portfolio",
+    liveLink: "https://princekothari.vercel.app",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80", // ✅ Real image
+    featured: true,
+    status: "Completed",
+    order: 1
+  },
+  {
+    _id: "2",
+    title: "E-Commerce Platform",
+    description: "Full-stack e-commerce solution with payment integration",
+    longDescription: "Complete e-commerce platform with user authentication, product management, shopping cart, payment integration with Stripe, order tracking, and admin dashboard.",
+    techStack: ["React", "Redux", "Node.js", "MongoDB", "Stripe"],
+    category: "Full Stack",
+    githubLink: "https://github.com/princekotharii/ecommerce",
+    liveLink: "https://ecommerce-demo.vercel.app",
+    image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80", // ✅ Real image
+    featured: true,
+    status: "Completed",
+    order: 2
+  },
+  {
+    _id: "3",
+    title: "Task Management App",
+    description: "Collaborative task management tool with real-time updates",
+    longDescription: "Real-time collaborative task management application with drag-and-drop functionality, team collaboration features, and Firebase real-time database integration.",
+    techStack: ["React", "Firebase", "Material-UI"],
+    category: "Frontend",
+    githubLink: "https://github.com/princekotharii/task-app",
+    liveLink: "https://task-app-demo.vercel.app",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80", // ✅ Real image
+    featured: false,
+    status: "Completed",
+    order: 3
+  }
+],
 
   // Education Section
   education: [
