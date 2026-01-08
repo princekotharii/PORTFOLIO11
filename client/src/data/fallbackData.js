@@ -141,37 +141,42 @@ export const fallbackData = {
 
   // Education Section
   education: [
-    {
-      _id: "1",
-      degree: "Bachelor of Technology",
-      field: "Computer Science",
-      institution: "Your University",
-      location: "City, Country",
-      duration: "2020 - 2024",
-      startDate: "2020",
-      endDate: "2024",
-      grade: "CGPA: 8.5/10",
-      description: "Focused on software development, algorithms, data structures, and web technologies",
-      highlights: ["Dean's List", "Best Project Award"],
-      icon: "GraduationCap",
-      color: "from-purple-500 to-pink-500",
-      order: 1
-    },
-    {
-      _id: "2",
-      degree:  "Senior Secondary (12th)",
-      field: "Science (PCM)",
-      institution: "Your School",
-      location: "City, Country",
-      duration: "2018 - 2020",
-      grade: "Percentage: 92%",
-      description: "Physics, Chemistry, Mathematics with Computer Science",
-      highlights: ["School Topper"],
-      icon: "BookOpen",
-      color: "from-blue-500 to-cyan-500",
-      order: 2
-    }
-  ],
+  {
+    _id: "1",
+    degree: "Bachelor of Technology",
+    field: "Computer Science & Engineering",
+    institution: "Your University Name",
+    location: "Mumbai, India",
+    duration: "2020 - 2024",
+    grade: "CGPA: 8.5/10",
+    description: "Focused on software engineering, data structures, algorithms, web development, and database management.  Completed major projects in full-stack development.",
+    highlights: [
+      "Dean's List for Academic Excellence",
+      "Best Final Year Project Award",
+      "Led college technical fest organizing committee"
+    ],
+    icon: "GraduationCap",
+    color: "from-purple-500 to-pink-500",
+    order: 1
+  },
+  {
+    _id: "2",
+    degree: "Senior Secondary (12th)",
+    field: "Science (PCM with Computer Science)",
+    institution: "Your School Name",
+    location: "Mumbai, India",
+    duration: "2018 - 2020",
+    grade: "Percentage: 92%",
+    description: "Physics, Chemistry, Mathematics with Computer Science. Strong foundation in programming and problem-solving.",
+    highlights: [
+      "School Topper in Computer Science",
+      "Science Exhibition Winner"
+    ],
+    icon: "BookOpen",
+    color: "from-blue-500 to-cyan-500",
+    order: 2
+  }
+],
 
   // Achievements Section
   achievements: [
