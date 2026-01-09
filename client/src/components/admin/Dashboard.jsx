@@ -12,7 +12,8 @@ import {
   Trash2,
   Eye,
   CheckCircle,
-  XCircle
+  XCircle ,
+  User
 } from 'lucide-react';
 import { removeToken } from '../../utils/auth';
 import { projectAPI, skillAPI, educationAPI, achievementAPI, statusAPI } from '../../services/api';
@@ -20,6 +21,7 @@ import ProjectForm from './ProjectForm';
 import SkillForm from './SkillForm';
 import EducationForm from './EducationForm';
 import AchievementForm from './AchievementForm';
+import ProfileForm from './ProjectForm';
 import './Dashboard.css';
 import './AdminLayout.css';
 
@@ -42,6 +44,7 @@ const Dashboard = ({ onLogout }) => {
 
   const tabs = [
     { id: 'overview', name: 'Overview', icon: LayoutDashboard },
+    { id:  'profile', name: 'Profile', icon: User },
     { id: 'projects', name:  'Projects', icon: FolderKanban },
     { id: 'skills', name:  'Skills', icon: Award },
     { id: 'education', name: 'Education', icon: GraduationCap },
@@ -139,6 +142,64 @@ const Dashboard = ({ onLogout }) => {
       alert('Failed to update status');
     }
   };
+
+const handleProfileSave = async (profileData) => {
+  try {
+    // ✅ Check if token exists
+    const token = localStorage.getItem('token');
+    console.log('🔑 Token exists:', !!token);
+    console.log('🔑 Token value:', token ?  token.substring(0, 20) + '...' : 'No token');
+
+    if (!token) {
+      alert('You are not logged in. Please log in again.');
+      handleLogout();
+      return;
+    }
+
+    const updatedData = {
+      hero: {
+        name: profileData.name,
+        role: profileData. role,
+        tagline: profileData.tagline,
+        description: profileData.description,
+        email: profileData.email,
+        githubLink: profileData. githubLink,
+        linkedinLink: profileData.linkedinLink,
+        twitterLink: profileData.twitterLink,
+      },
+      about: {
+        profileImage: profileData.profileImage,
+        description: profileData. aboutDescription,
+        location: profileData.location,
+        email: profileData.email,
+        phone: profileData.phone,
+        highlights: profileData.highlights,
+        stats: profileData.stats,
+      }
+    };
+    
+    console.log('📤 Sending profile update... ', updatedData);
+    
+    // Save to backend API
+    const response = await profileAPI.update(updatedData);
+    
+    console.log('✅ Profile updated:', response);
+    
+    alert('Profile updated successfully!  Reload the page to see changes.');
+    setShowForm(false);
+    fetchData();
+  } catch (error) {
+    console.error('❌ Error saving profile:', error);
+    console.error('❌ Error response:', error.response?.data);
+    
+    if (error.response?.status === 401) {
+      alert('Session expired. Please log in again.');
+      handleLogout();
+    } else {
+      alert(`Failed to save profile: ${error.response?.data?.message || error.message}`);
+    }
+  }
+};
 
   const renderOverview = () => (
     <div className="overview-grid">
@@ -350,28 +411,58 @@ const Dashboard = ({ onLogout }) => {
           </a>
         </div>
 
-        <div className="admin-content">
-          {activeTab === 'overview' && renderOverview()}
-          {activeTab === 'projects' && ! showForm && renderList(data. projects, 'projects')}
-          {activeTab === 'skills' && !showForm && renderList(data.skills, 'skills')}
-          {activeTab === 'education' && !showForm && renderList(data.education, 'education')}
-          {activeTab === 'achievements' && !showForm && renderList(data.achievements, 'achievements')}
-          {activeTab === 'settings' && renderSettings()}
+       <div className="admin-content">
+  {activeTab === 'overview' && renderOverview()}
+  {activeTab === 'projects' && ! showForm && renderList(data. projects, 'projects')}
+  {activeTab === 'skills' && !showForm && renderList(data.skills, 'skills')}
+  {activeTab === 'education' && !showForm && renderList(data.education, 'education')}
+  {activeTab === 'achievements' && !showForm && renderList(data.achievements, 'achievements')}
+  {activeTab === 'settings' && renderSettings()}
 
-          {/* Forms */}
-          {showForm && activeTab === 'projects' && (
-            <ProjectForm item={editingItem} onClose={handleFormClose} />
-          )}
-          {showForm && activeTab === 'skills' && (
-            <SkillForm item={editingItem} onClose={handleFormClose} />
-          )}
-          {showForm && activeTab === 'education' && (
-            <EducationForm item={editingItem} onClose={handleFormClose} />
-          )}
-          {showForm && activeTab === 'achievements' && (
-            <AchievementForm item={editingItem} onClose={handleFormClose} />
-          )}
+  {/* ✅ Profile Content */}
+  {activeTab === 'profile' && !showForm && (
+    <div className="admin-list">
+      <div className="admin-list-header">
+        <h3 className="section-subtitle">Personal Information</h3>
+        <button 
+          onClick={() => setShowForm(true)} 
+          className="btn btn-primary"
+        >
+          <Edit size={18} />
+          Edit Profile
+        </button>
+      </div>
+      <div className="admin-table">
+        <div className="empty-state">
+          <p>Click "Edit Profile" to update your name, bio, social links, and more.</p>
         </div>
+      </div>
+    </div>
+  )}
+
+  {/* Forms */}
+  {showForm && activeTab === 'projects' && (
+    <ProjectForm item={editingItem} onClose={handleFormClose} />
+  )}
+  {showForm && activeTab === 'skills' && (
+    <SkillForm item={editingItem} onClose={handleFormClose} />
+  )}
+  {showForm && activeTab === 'education' && (
+    <EducationForm item={editingItem} onClose={handleFormClose} />
+  )}
+  {showForm && activeTab === 'achievements' && (
+    <AchievementForm item={editingItem} onClose={handleFormClose} />
+  )}
+  
+  {/* ✅ Profile Form Modal */}
+  {showForm && activeTab === 'profile' && (
+    <ProfileForm
+      data={data}
+      onSave={handleProfileSave}
+      onClose={handleFormClose}
+    />
+  )}
+</div>
       </main>
     </div>
   );

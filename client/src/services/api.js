@@ -76,5 +76,9 @@ export const statusAPI = {
   get: () => api.get('/status'),
   update: (data) => api.put('/status', data),
 };
+export const profileAPI = {
+  get: () => api.get('/profile'),
+  update: (data) => api.put('/profile', data),
+};
 
 export default api;

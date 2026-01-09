@@ -22,7 +22,7 @@ const Home = () => {
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
-        const element = document. getElementById(section);
+        const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
@@ -33,7 +33,7 @@ const Home = () => {
       }
     };
 
-    window. addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -75,23 +75,27 @@ const Home = () => {
     );
   }
 
+  // ✅ FIXED:  Merge about data with status data
+  const aboutData = {
+    ... data.about,
+    availableForWork: data.status?. availableForWork ??  data.about?.availableForWork ??  true
+  };
+
   return (
     <div className="App">
       <Navbar activeSection={activeSection} />
       
       <main>
-        <Hero data={data. hero} />
-        <About data={data.about} isVisible={visibleSections.has('about')} />
+        <Hero data={data.hero} />
+        <About data={aboutData} isVisible={visibleSections.has('about')} />
         <Skills data={data.skills} isVisible={visibleSections.has('skills')} />
         <Projects data={data.projects} isVisible={visibleSections.has('projects')} />
         <Education data={data.education} isVisible={visibleSections.has('education')} />
         <Achievements data={data.achievements} isVisible={visibleSections. has('achievements')} />
-        <Contact data={data.hero} isVisible={visibleSections. has('contact')} />
+        <Contact data={data.hero} isVisible={visibleSections.has('contact')} />
       </main>
 
       <Footer />
-
-      {/* ✅ REMOVED: Backend Status Indicator Badge */}
     </div>
   );
 };
