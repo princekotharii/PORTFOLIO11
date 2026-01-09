@@ -345,3 +345,29 @@
     font-size: 1.25rem;
   }
 }
+
+/* ============================================
+   DYNAMIC STATUS COLORS
+   ============================================ */
+
+/* Green - Available */
+.status-badge-below.status-available {
+  background:  linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1));
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #10b981;
+}
+
+.status-badge-below.status-available .status-dot-pulse {
+  background: #10b981;
+}
+
+/* Red - Not Available */
+.status-badge-below.status-unavailable {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.1));
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #ef4444;
+}
+
+.status-badge-below.status-unavailable .status-dot-pulse {
+  background: #ef4444;
+}

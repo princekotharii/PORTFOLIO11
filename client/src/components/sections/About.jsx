@@ -15,9 +15,12 @@ const About = ({ data, isVisible }) => {
 
   const highlights = data?. highlights || [];
   const stats = data?.stats || [];
+  
+  // ✅ Get availability status from data (default to false if not provided)
+  const isAvailable = data?.availableForWork ??  false;
 
   return (
-    <section id="about" className={`about-section ${isVisible ? 'visible' :  ''}`}>
+    <section id="about" className={`about-section ${isVisible ? 'visible' :   ''}`}>
       <div className="section-bg"></div>
       
       <div className="container">
@@ -42,10 +45,10 @@ const About = ({ data, isVisible }) => {
                 {data?.profileImage ? (
                   <img
                     src={data.profileImage}
-                    alt={data?. name || 'Profile'}
+                    alt={data?.name || 'Profile'}
                     className="profile-img-circle"
                     onError={(e) => {
-                      e.target.style. display = 'none';
+                      e. target.style. display = 'none';
                       e.target.nextSibling.style.display = 'flex';
                     }}
                   />
@@ -55,9 +58,11 @@ const About = ({ data, isVisible }) => {
                 </div>
               </div>
             </div>
-            <div className="status-badge-below">
+            
+            {/* ✅ Dynamic Status Badge */}
+            <div className={`status-badge-below ${isAvailable ? 'status-available' : 'status-unavailable'}`}>
               <span className="status-dot-pulse"></span>
-              Available for work
+              {isAvailable ?  'Available for work' : 'Not available'}
             </div>
           </div>
 
@@ -80,7 +85,7 @@ const About = ({ data, isVisible }) => {
             <div className="highlights-section-new">
               <h3 className="about-heading">What I Bring</h3>
               <div className="highlights-grid-new">
-                {highlights. map((highlight, idx) => {
+                {highlights.map((highlight, idx) => {
                   const Icon = iconMap[highlight.icon] || Code;
                   return (
                     <div key={idx} className="highlight-item-new">
