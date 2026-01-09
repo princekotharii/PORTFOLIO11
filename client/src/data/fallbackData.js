@@ -6,10 +6,10 @@ export const fallbackData = {
     tagline:  "Building scalable web applications with modern technologies",
     description: "Passionate about creating seamless user experiences and robust backend systems",
     resumeLink: "/resume.pdf",
-    githubLink: "https://github.com/yourusername",
-    linkedinLink: "https://linkedin.com/in/yourusername",
-    twitterLink: "https://twitter.com/yourusername",
-    email:  "your.email@example. com",
+    githubLink: "https://github.com/princekotharii",
+    linkedinLink: "https://www.linkedin.com/in/princekothari/",
+    twitterLink: "https://x.com/princekotharii",
+    email:  "princekothari016@gmail.com",
   },
 
   // About Section
@@ -17,9 +17,9 @@ export const fallbackData = {
     profileImage: "https://avatars.githubusercontent.com/u/197196645?v=4",
     description: "Passionate full-stack developer with expertise in MERN stack.  I love creating seamless user experiences and robust backend systems. Always eager to learn new technologies and solve complex problems.",
     availableForWork: true, // ✅ ADDED HERE - Change to false to show "Not available"
-    location: "Mumbai, India",
+    location: "Uttrakhand, India",
     email: "princekothari016@gmail.com",
-    phone: "+91 98765 43210",
+    phone: "+91 7300879646",
     highlights: [
       { icon: "Zap", text: "Fast Learner", color: "#eab308" },
       { icon: "Target", text: "Goal Oriented", color: "#10b981" },
