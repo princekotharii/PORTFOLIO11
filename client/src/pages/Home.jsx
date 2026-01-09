@@ -8,12 +8,14 @@ import Projects from '../components/sections/Projects';
 import Education from '../components/sections/Education';
 import Achievements from '../components/sections/Achievements';
 import Contact from '../components/sections/Contact';
-import { usePortfolioData } from '../hooks/usePortfolioData';
+import { fallbackData } from '../data/fallbackData';
 
 const Home = () => {
-  const { data, loading, error, isBackendAvailable } = usePortfolioData();
   const [activeSection, setActiveSection] = useState('home');
   const [visibleSections, setVisibleSections] = useState(new Set(['home']));
+
+  // Use fallbackData directly - no API calls! 
+  const data = fallbackData;
 
   // Track active section
   useEffect(() => {
@@ -41,13 +43,13 @@ const Home = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        entries. forEach((entry) => {
           if (entry.isIntersecting) {
             setVisibleSections((prev) => new Set([...prev, entry.target.id]));
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold:  0.1 }
     );
 
     const sections = ['about', 'skills', 'projects', 'education', 'achievements', 'contact'];
@@ -59,40 +61,18 @@ const Home = () => {
     return () => observer.disconnect();
   }, []);
 
-  if (loading) {
-    return (
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
-        minHeight: '100vh',
-        flexDirection: 'column',
-        gap: '1rem'
-      }}>
-        <div className="spinner" style={{ width: '48px', height: '48px', borderWidth: '4px' }}></div>
-        <p style={{ color: 'var(--color-text-muted)' }}>Loading portfolio... </p>
-      </div>
-    );
-  }
-
-  // ✅ FIXED:  Merge about data with status data
-  const aboutData = {
-    ... data.about,
-    availableForWork: data.status?. availableForWork ??  data.about?.availableForWork ??  true
-  };
-
   return (
     <div className="App">
       <Navbar activeSection={activeSection} />
       
       <main>
         <Hero data={data.hero} />
-        <About data={aboutData} isVisible={visibleSections.has('about')} />
+        <About data={data.about} isVisible={visibleSections.has('about')} />
         <Skills data={data.skills} isVisible={visibleSections.has('skills')} />
         <Projects data={data.projects} isVisible={visibleSections.has('projects')} />
         <Education data={data.education} isVisible={visibleSections.has('education')} />
-        <Achievements data={data.achievements} isVisible={visibleSections. has('achievements')} />
-        <Contact data={data.hero} isVisible={visibleSections.has('contact')} />
+        <Achievements data={data. achievements} isVisible={visibleSections. has('achievements')} />
+        <Contact data={data.hero} isVisible={visibleSections. has('contact')} />
       </main>
 
       <Footer />
