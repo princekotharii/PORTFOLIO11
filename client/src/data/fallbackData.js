@@ -47,9 +47,9 @@ export const fallbackData = {
       icon: "Globe",
       color: "#a855f7",
       items: [
-        { name: "React. js", level: 90 },
-        { name:  "JavaScript", level: 85 },
-        { name: "HTML & CSS", level: 95 },
+        { name: "React. js", level: 80 },
+        { name:  "JavaScript", level: 80 },
+        { name: "HTML & CSS", level: 98 },
         { name: "Tailwind CSS", level: 88 },
         { name: "Redux", level: 75 }
       ],
@@ -61,11 +61,11 @@ export const fallbackData = {
       icon: "Terminal",
       color: "#3b82f6",
       items: [
-        { name: "Node.js", level: 85 },
+        { name: "Node.js", level: 81 },
         { name: "Express.js", level: 82 },
         { name: "MongoDB", level: 80 },
         { name: "MySQL", level: 75 },
-        { name: "REST APIs", level: 90 }
+        
       ],
       order: 2
     },
@@ -75,11 +75,11 @@ export const fallbackData = {
       icon: "Code",
       color: "#10b981",
       items: [
-        { name: "JavaScript", level: 90 },
+        { name: "JavaScript", level: 86 },
         { name: "Python", level: 75 },
         { name: "Java", level: 70 },
         { name: "C++", level: 65 },
-        { name: "TypeScript", level: 80 }
+        { name: "TypeScript", level: 70 }
       ],
       order: 3
     },
@@ -103,45 +103,59 @@ export const fallbackData = {
   projects: [
     {
       _id: "1",
-      title: "Portfolio Website",
-      description: "A modern MERN stack portfolio with admin panel and dynamic content management",
-      longDescription: "Full-featured portfolio website with backend API, admin authentication, and real-time content updates. Built with React, Node.js, Express, and MongoDB. Features include dynamic content management, responsive design, and smooth animations.",
-      techStack: ["React", "Node. js", "MongoDB", "Express", "Tailwind CSS"],
+      title: "School Website Redesign",
+      description: "School Website Redesign is a UI-focused web project aimed at Modernizing. ",
+      longDescription: "School Website Redesign is a UI-focused web project aimed at modernizing an outdated school website to improve usability, accessibility, and visual appeal. The redesign prioritizes a clean layout, intuitive navigation, and a student- and parent-friendly user experience.",
+      techStack: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
       category: "Full Stack",
-      githubLink:  "https://github.com/princekotharii/portfolio",
-      liveLink: "https://princekothari.vercel.app",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f? w=800&q=80",
+      githubLink:  "https://github.com/princekotharii/SGPS-Schol-Website",
+      liveLink: "https://shivalikgangespublicschool.vercel.app/",
+      image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1768040149/Screenshot_2026-01-10_154456_uawtar.png",
       featured: true,
       status: "Completed",
       order: 1
     },
     {
       _id: "2",
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with payment integration",
-      longDescription: "Complete e-commerce platform with user authentication, product management, shopping cart, payment integration with Stripe, order tracking, and admin dashboard.",
+      title: "Samsung India Clone",
+      description: "Samsung India Clone Website is a fully responsive front-end web project inspired by the official Samsung India website.",
+      longDescription: "Samsung India Clone Website is a fully responsive front-end web project inspired by the official Samsung India website. The goal of this project was to closely replicate a real-world commercial website while focusing on clean UI, structured layouts, and smooth user experience.",
       techStack: ["React", "Redux", "Node.js", "MongoDB", "Stripe"],
       category: "Full Stack",
-      githubLink: "https://github.com/princekotharii/ecommerce",
-      liveLink: "https://ecommerce-demo.vercel.app",
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
+      githubLink: "https://github.com/princekotharii/Samsung-India",
+      liveLink: "https://samsungindia.vercel.app/",
+      image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1768040689/Screenshot_2026-01-10_155413_m1u532.png",
       featured: true,
       status: "Completed",
       order: 2
     },
     {
       _id: "3",
-      title: "Task Management App",
-      description: "Collaborative task management tool with real-time updates",
-      longDescription: "Real-time collaborative task management application with drag-and-drop functionality, team collaboration features, and Firebase real-time database integration.",
+      title: "Film Website ",
+      description: "Film Website Project is an academic web development project",
+      longDescription: "Film Website Project is an academic web development project assigned by the college, focused on designing and developing a complete website for a film. The objective was to present film-related content in a structured, visually appealing, and user-friendly format.",
       techStack: ["React", "Firebase", "Material-UI"],
       category: "Frontend",
-      githubLink: "https://github.com/princekotharii/task-app",
-      liveLink: "https://task-app-demo.vercel.app",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+      githubLink: "https://github.com/princekotharii/Varnan-Films",
+      liveLink: "https://varnanfilms.vercel.app/",
+      image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1768041036/Screenshot_2026-01-10_160020_gftcrt.png",
       featured: false,
       status: "Completed",
       order: 3
+    },
+    {
+      _id: "4",
+      title: "Roadengo-Bike Services",
+      description: "Roadengo-Bike Services is a web development project focused on providing a platform for bike services.",
+      longDescription: "Roadengo-Bike Services is a web development project focused on providing a platform for bike services. The website allows users to book services, view service history, and manage their profiles.",
+      techStack: ["React", "Node.js", "Material-UI"],
+      category: "Frontend",
+      githubLink: "https://github.com/DevNest-Prince/roadengo",
+      liveLink: "https://roadengo.vercel.app/",
+      image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1768054172/Screenshot_2026-01-10_193819_js6n4a.png",
+      featured: false,
+      status: "Completed",
+      order: 4
     }
   ],
 
@@ -149,11 +163,11 @@ export const fallbackData = {
   education: [
     {
       _id: "1",
-      degree: "Bachelor of Technology",
+      degree: "Bachelor of Computer Applications",
       field: "Computer Science & Engineering",
-      institution: "Your University Name",
+      institution: "Motherhood University",
       location: "Uttrakhand, India",
-      duration: "2020 - 2024",
+      duration: "2024 - 2026",
       grade: "CGPA: 8.5/10",
       description: "Focused on software engineering, data structures, algorithms, web development, and database management.  Completed major projects in full-stack development.",
       highlights: [
@@ -169,18 +183,33 @@ export const fallbackData = {
       _id: "2",
       degree:  "Senior Secondary (12th)",
       field: "Science (PCM with Computer Science)",
-      institution: "Your School Name",
+      institution: "Shivalik Ganges Public School",
       location: "Uttrakhand, India",
-      duration: "2018 - 2020",
-      grade: "Percentage: 92%",
+      duration: "2022 - 2023",
+      // grade: "Percentage: 92%",
       description: "Physics, Chemistry, Mathematics with Computer Science.  Strong foundation in programming and problem-solving.",
       highlights: [
-        "School Topper in Computer Science",
         "Science Exhibition Winner"
       ],
       icon: "BookOpen",
       color: "from-blue-500 to-cyan-500",
       order: 2
+    },
+    {
+      _id: "3",
+      degree:  "Secondary (10th)",
+      field: "General Studies",
+      institution: "Shivalik Ganges Public School",
+      location: "Uttrakhand, India",
+      duration: "2022 - 2023",
+      // grade: "Percentage: 71%",
+      description: "Physics, Chemistry, Mathematics with Computer Science.  Strong foundation in programming and problem-solving.",
+      highlights: [
+        "Active in school activities",
+      ],
+      icon: "BookOpen",
+      color: "from-green-500 to-emerald-500",
+      order: 3
     }
   ],
 

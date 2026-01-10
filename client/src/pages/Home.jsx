@@ -63,7 +63,7 @@ const Home = () => {
 
   return (
     <div className="App">
-      <Navbar activeSection={activeSection} />
+      <Navbar activeSection={activeSection} data={data} />
       
       <main>
         <Hero data={data.hero} />
@@ -72,10 +72,10 @@ const Home = () => {
         <Projects data={data.projects} isVisible={visibleSections.has('projects')} />
         <Education data={data.education} isVisible={visibleSections.has('education')} />
         <Achievements data={data. achievements} isVisible={visibleSections. has('achievements')} />
-        <Contact data={data.hero} isVisible={visibleSections. has('contact')} />
+       <Contact data={{... data.hero, ...data.about}} isVisible={visibleSections.has('contact')} />
       </main>
 
-      <Footer />
+      <Footer data={data} />
     </div>
   );
 };
