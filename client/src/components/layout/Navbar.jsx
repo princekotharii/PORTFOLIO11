@@ -3,7 +3,7 @@ import { Terminal, Menu, Github, Linkedin, Twitter, Mail } from 'lucide-react';
 import MobileMenu from './MobileMenu';
 import './Navbar.css';
 
-const Navbar = ({ activeSection }) => {
+const Navbar = ({ activeSection, data }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -17,10 +17,10 @@ const Navbar = ({ activeSection }) => {
   ];
 
   const socialLinks = [
-    { icon: Github, url: 'https://github.com/yourusername', label: 'GitHub' },
-    { icon: Linkedin, url: 'https://linkedin.com/in/yourusername', label: 'LinkedIn' },
-    { icon: Twitter, url: 'https://twitter.com/yourusername', label: 'Twitter' }
-  ];
+            { icon: Github, url:  data?.hero?.githubLink || '#', label: 'GitHub' },
+            { icon: Linkedin, url: data?.hero?.linkedinLink || '#', label: 'LinkedIn' },
+            { icon:  Twitter, url: data?.hero?. twitterLink || '#', label:  'Twitter' }
+                      ];
 
   useEffect(() => {
     const handleScroll = () => {
