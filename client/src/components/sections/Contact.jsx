@@ -75,10 +75,10 @@ const Contact = ({ data, isVisible }) => {
   ];
 
   const socialLinks = [
-    { icon: Github, url: 'https://github.com/yourusername', label: 'GitHub' },
-    { icon:  Linkedin, url: 'https://linkedin.com/in/yourusername', label: 'LinkedIn' },
-    { icon: Twitter, url: 'https://twitter.com/yourusername', label: 'Twitter' }
-  ];
+  { icon: Github, url: data?.githubLink || '#', label: 'GitHub' },
+  { icon: Linkedin, url: data?.linkedinLink || '#', label: 'LinkedIn' },
+  { icon: Twitter, url: data?.twitterLink || '#', label: 'Twitter' }
+];
 
   return (
     <section id="contact" className={`contact-section ${isVisible ? 'visible' : ''}`}>
