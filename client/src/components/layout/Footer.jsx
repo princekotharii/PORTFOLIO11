@@ -1,7 +1,7 @@
 import { Github, Linkedin, Twitter, Mail, Heart, ArrowUp, Terminal } from 'lucide-react';
 import './Footer.css';
 
-const Footer = () => {
+const Footer = ({ data }) => {
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -16,11 +16,11 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Github, url: 'https://github.com/yourusername', label: 'GitHub' },
-    { icon: Linkedin, url: 'https://linkedin.com/in/yourusername', label: 'LinkedIn' },
-    { icon: Twitter, url: 'https://twitter.com/yourusername', label: 'Twitter' },
-    { icon: Mail, url: 'mailto:your. email@example.com', label: 'Email' }
-  ];
+  { icon: Github, url: data?.hero?.githubLink || '#', label: 'GitHub' },
+  { icon: Linkedin, url:  data?.hero?.linkedinLink || '#', label: 'LinkedIn' },
+  { icon: Twitter, url: data?.hero?.twitterLink || '#', label: 'Twitter' },
+  { icon:  Mail, url: `mailto:${data?.hero?.email}` || '#', label: 'Email' }
+];
 
   return (
     <footer className="footer">
@@ -34,8 +34,8 @@ const Footer = () => {
                 <Terminal size={24} />
               </div>
               <div>
-                <h3 className="footer-logo-text gradient-text">Prince Kothari</h3>
-                <p className="footer-logo-subtitle">Full Stack Developer</p>
+                <h3 className="footer-logo-text gradient-text">{data?.hero?.name || 'Prince Kothari'}</h3>
+                <p className="footer-logo-subtitle">{data?.hero?.role || 'Full Stack Developer'}</p>
               </div>
             </div>
             <p className="footer-description">
@@ -76,9 +76,9 @@ const Footer = () => {
           <div className="footer-contact-section">
             <h4 className="footer-contact-title">Contact</h4>
             <ul className="footer-contact">
-              <li>Your City, Country</li>
-              <li>your.email@example.com</li>
-              <li>+1 234 567 8900</li>
+              <li>{data?.about?.location || 'Your City, Country'}</li>
+              <li>{data?.about?.email || 'your.email@example.com'}</li>
+              <li>{data?.about?.phone || '+1 234 567 8900'}</li>
             </ul>
           </div>
         </div>
@@ -86,7 +86,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="footer-bottom">
           <p className="footer-copyright">
-            © {currentYear} Your Name.  Made with <Heart size={16} className="footer-heart" /> using React & Tailwind CSS
+           © {currentYear} {data?.hero?.name || 'Your Name'}. Made with <Heart size={16} className="footer-heart" /> using React & Tailwind CSS
           </p>
 
           {/* Scroll to Top */}
