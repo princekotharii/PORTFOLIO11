@@ -1,96 +1,167 @@
-import { Trophy, Award, Github, Star, Medal, Target, Zap } from 'lucide-react';
+import { useState } from 'react';
+import { Trophy, Award, Github, Sparkles, Star, ExternalLink, Calendar, Building2, Medal } from 'lucide-react';
 import './Achievements.css';
 
 const Achievements = ({ data, isVisible }) => {
-  const iconMap = {
-    Trophy,
-    Award,
-    Github,
-    Star,
-    Medal,
-    Target,
-    Zap
-  };
-
+  const [showAll, setShowAll] = useState(false);
+  
   const achievements = data || [];
+  const displayedAchievements = showAll ?  achievements : achievements.slice(0, 3);
+  const hasMore = achievements.length > 3;
+
+  const getIcon = (iconName) => {
+    const icons = {
+      Trophy,
+      Award,
+      Github,
+      Sparkles,
+      Medal,
+      Star
+    };
+    return icons[iconName] || Trophy;
+  };
 
   return (
     <section id="achievements" className={`achievements-section ${isVisible ? 'visible' : ''}`}>
-      <div className="section-bg"></div>
+      {/* Animated Background
+      <div className="achievements-bg">
+        <div className="achievements-gradient-1"></div>
+        <div className="achievements-gradient-2"></div>
+      </div> */}
       
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <div className="section-badge">
-            <Target size={16} />
-            <span>My Milestones</span>
+          <div className="achievements-badge-header">
+            <Trophy className="trophy-icon-pulse" size={20} />
+            <span>Achievements & Certificates</span>
           </div>
-          <h2 className="section-title">
-            <span className="gradient-text-yellow">Achievements & Awards</span>
+          <h2 className="achievements-main-title">
+            <span className="shine-text">Awards & Recognition</span>
           </h2>
-          <div className="section-divider-yellow"></div>
-          <p className="section-description">
-            Recognition and accomplishments throughout my journey as a developer
+          <div className="achievements-title-underline"></div>
+          <p className="achievements-subtitle">
+            Celebrating milestones, certifications, and accomplishments
           </p>
         </div>
-        
-        {/* Achievements Grid */}
-        <div className="achievements-grid">
-          {achievements.map((achievement, idx) => {
-            const Icon = iconMap[achievement.icon] || Trophy;
-            return (
-              <div key={idx} className="achievement-card">
-                <div 
-                  className="achievement-card-glow" 
-                  style={{ background: `linear-gradient(to bottom right, ${achievement.color || '#f59e0b'}, ${achievement.color}40)` }}
-                ></div>
-                
-                <div className="achievement-card-inner">
-                  {/* Icon */}
-                  <div className="achievement-header">
-                    <div className="achievement-icon" style={{ background: achievement.color || '#f59e0b' }}>
-                      <Icon size={40} />
-                    </div>
-                    {/* Badge */}
-                    <div className="achievement-badge">
-                      {achievement.badge || '🏆'}
-                    </div>
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="achievement-content">
-                    <div className="achievement-title-row">
-                      <h3 className="achievement-title">{achievement.title}</h3>
-                      <span className="achievement-date">{achievement.date}</span>
-                    </div>
+
+        {achievements.length > 0 ?  (
+          <>
+            {/* Achievements Grid */}
+            <div className="achievements-showcase">
+              {displayedAchievements.map((achievement, idx) => {
+                const Icon = getIcon(achievement.icon);
+                return (
+                  <div 
+                    key={achievement._id || idx} 
+                    className="achievement-certificate"
+                    style={{ 
+                      animationDelay:  `${idx * 0.15}s`
+                    }}
+                  >
+                    {/* Certificate Border Effect */}
+                    <div className="certificate-border" style={{ '--cert-color': achievement.color }}></div>
                     
-                    <p className="achievement-description">
-                      {achievement.description}
-                    </p>
+                    {/* Certificate Content */}
+                    <div className="certificate-content">
+                      {/* Top Badge */}
+                      <div className="certificate-top-badge" style={{ background: achievement.color }}>
+                        <Icon size={24} />
+                      </div>
 
-                    {achievement.organization && (
-                      <p className="achievement-organization">
-                        <Award size={14} />
-                        {achievement.organization}
-                      </p>
-                    )}
+                      {/* Category & Year */}
+                      <div className="certificate-meta">
+                        <span className="certificate-category">{achievement.category}</span>
+                        <span className="certificate-year">
+                          <Calendar size={12} />
+                          {achievement. date}
+                        </span>
+                      </div>
 
-                    {achievement.link && (
-                      <a 
-                        href={achievement.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="achievement-link"
-                      >
-                        View Certificate →
-                      </a>
-                    )}
+                      {/* Title */}
+                      <h3 className="certificate-title">{achievement.title}</h3>
+
+                      {/* Badge Label */}
+                      <div className="certificate-badge-label" style={{ 
+                        background: `${achievement.color}15`,
+                        color: achievement.color,
+                        borderColor: `${achievement.color}40`
+                      }}>
+                        {achievement.badge}
+                      </div>
+
+                      {/* Description */}
+                      <p className="certificate-description">{achievement. description}</p>
+
+                      {/* Organization */}
+                      {achievement.organization && (
+                        <div className="certificate-organization">
+                          <Building2 size={16} />
+                          <span>{achievement.organization}</span>
+                        </div>
+                      )}
+
+                      {/* Certificate Link */}
+                      {achievement.certificateLink ?  (
+                        <a
+                          href={achievement.certificateLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="certificate-view-btn"
+                          style={{ 
+                            '--btn-color': achievement.color 
+                          }}
+                        >
+                          <ExternalLink size={18} />
+                          <span>View Certificate</span>
+                          <div className="btn-shine"></div>
+                        </a>
+                      ) : (
+                        <div className="certificate-no-link">
+                          <Star size={16} />
+                          <span>Achievement Unlocked</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Decorative Corner Stars */}
+                    <div className="certificate-star star-1">⭐</div>
+                    <div className="certificate-star star-2">✨</div>
                   </div>
-                </div>
+                );
+              })}
+            </div>
+
+            {/* Show More Button */}
+            {hasMore && (
+              <div className="achievements-toggle">
+                <button 
+                  onClick={() => setShowAll(!showAll)}
+                  className="toggle-achievements-btn"
+                >
+                  <span className="toggle-icon">
+                    {showAll ?  '▲' : '▼'}
+                  </span>
+                  <span className="toggle-text">
+                    {showAll 
+                      ? 'Show Less' 
+                      : `View ${achievements.length - 3} More Achievement${achievements.length - 3 > 1 ?  's' : ''}`
+                    }
+                  </span>
+                  <span className="toggle-count">{showAll ? '' : `+${achievements.length - 3}`}</span>
+                </button>
               </div>
-            );
-          })}
-        </div>
+            )}
+          </>
+        ) : (
+          <div className="achievements-empty-state">
+            <div className="empty-icon">
+              <Trophy size={64} />
+            </div>
+            <h3>No Achievements Yet</h3>
+            <p>Check back soon for upcoming awards and certifications!</p>
+          </div>
+        )}
       </div>
     </section>
   );
