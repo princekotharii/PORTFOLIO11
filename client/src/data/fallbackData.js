@@ -103,9 +103,24 @@ export const fallbackData = {
   projects: [
     {
       _id: "1",
+      title: "Roadengo-Bike Services",
+      description: "🪛 Roadengo-Bike Services is a web development project focused on providing a platform for bike services.",
+      longDescription: "🛠️ Roadengo-Bike Services is a web development project focused on providing a platform for bike services. The website allows users to book services, view service history, and manage their profiles.",
+      techStack: ["React", "Node.js", "Material-UI","Nodemailer"],
+      category: "Full Stack",
+      githubLink: "https://github.com/DevNest-Prince/roadengo",
+      liveLink: "https://roadengo-lovat.vercel.app/",
+      image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1769063110/Screenshot_2026-01-22_115400_m1mpiq.png",
+      featured: true,
+      status: "Completed",
+      order: 1
+    },
+    
+    {
+      _id: "2",
       title: "School Website Redesign",
-      description: "School Website Redesign is a UI-focused web project aimed at Modernizing. ",
-      longDescription: "School Website Redesign is a UI-focused web project aimed at modernizing an outdated school website to improve usability, accessibility, and visual appeal. The redesign prioritizes a clean layout, intuitive navigation, and a student- and parent-friendly user experience.",
+      description: "📚 School Website Redesign is a UI-focused web project aimed at Modernizing. ",
+      longDescription: "🚌 School Website Redesign is a UI-focused web project aimed at modernizing an outdated school website to improve usability, accessibility, and visual appeal. The redesign prioritizes a clean layout, intuitive navigation, and a student- and parent-friendly user experience.",
       techStack: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
       category: "Full Stack",
       githubLink:  "https://github.com/princekotharii/SGPS-Schol-Website",
@@ -113,50 +128,50 @@ export const fallbackData = {
       image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1768040149/Screenshot_2026-01-10_154456_uawtar.png",
       featured: true,
       status: "Completed",
-      order: 1
+      order: 2
     },
-    {
-      _id: "2",
+     {
+      _id: "3",
       title: "Samsung India Clone",
-      description: "Samsung India Clone Website is a fully responsive front-end web project inspired by the official Samsung India website.",
-      longDescription: "Samsung India Clone Website is a fully responsive front-end web project inspired by the official Samsung India website. The goal of this project was to closely replicate a real-world commercial website while focusing on clean UI, structured layouts, and smooth user experience.",
+      description: " 🍀 Samsung India Clone Website is a fully responsive front-end web project inspired by the official Samsung India website.",
+      longDescription: " 🚀 Samsung India Clone Website is a fully responsive front-end web project inspired by the official Samsung India website. The goal of this project was to closely replicate a real-world commercial website while focusing on clean UI, structured layouts, and smooth user experience.",
       techStack: ["React", "Redux", "Node.js", "MongoDB", "Stripe"],
       category: "Full Stack",
       githubLink: "https://github.com/princekotharii/Samsung-India",
       liveLink: "https://samsungindia.vercel.app/",
       image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1768040689/Screenshot_2026-01-10_155413_m1u532.png",
-      featured: true,
-      status: "Completed",
-      order: 2
-    },
-    {
-      _id: "3",
-      title: "Film Website ",
-      description: "Film Website Project is an academic web development project",
-      longDescription: "Film Website Project is an academic web development project assigned by the college, focused on designing and developing a complete website for a film. The objective was to present film-related content in a structured, visually appealing, and user-friendly format.",
-      techStack: ["React", "Firebase", "Material-UI"],
-      category: "Frontend",
-      githubLink: "https://github.com/princekotharii/Varnan-Films",
-      liveLink: "https://varnanfilms.vercel.app/",
-      image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1768041036/Screenshot_2026-01-10_160020_gftcrt.png",
       featured: false,
       status: "Completed",
       order: 3
     },
     {
       _id: "4",
-      title: "Roadengo-Bike Services",
-      description: "Roadengo-Bike Services is a web development project focused on providing a platform for bike services.",
-      longDescription: "Roadengo-Bike Services is a web development project focused on providing a platform for bike services. The website allows users to book services, view service history, and manage their profiles.",
-      techStack: ["React", "Node.js", "Material-UI"],
+      title: "Film Website ",
+      description: " 🎞️ Film Website Project is an academic web development project",
+      longDescription: " 🎬 Film Website Project is an academic web development project assigned by the college, focused on designing and developing a complete website for a film. The objective was to present film-related content in a structured, visually appealing, and user-friendly format.",
+      techStack: ["React", "Firebase"],
       category: "Frontend",
-      githubLink: "https://github.com/DevNest-Prince/roadengo",
-      liveLink: "https://roadengo.vercel.app/",
-      image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1768054172/Screenshot_2026-01-10_193819_js6n4a.png",
+      githubLink: "https://github.com/princekotharii/Varnan-Films",
+      liveLink: "https://varnanfilms.vercel.app/",
+      image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1768041036/Screenshot_2026-01-10_160020_gftcrt.png",
       featured: false,
       status: "Completed",
       order: 4
-    }
+    },
+    {
+      _id: "5",
+      title: "Alpha-Lighting ",
+      description: "💡 Alpha is a modern lighting brand website featuring premium wall lights and fixtures.",
+      longDescription: "✨ Alpha is a fully responsive and visually polished website created for a modern lighting brand that specializes in wall lights, ceiling lights, table lamps, and ambient decorative lighting. The main objective of this project was to deliver a premium, minimal, and user-friendly experience that reflects the elegance and quality of the brand.",
+      techStack: ["React", "Firebase", "React-icons"],
+      category: "Frontend",
+      githubLink: "https://github.com/DevNest-Prince/Alpha",
+      liveLink: "https://alpha-psi-umber.vercel.app/",
+      image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1769063852/Screenshot_2026-01-22_120711_etvmwy.png",
+      featured: false,
+      status: "Completed",
+      order: 5
+    },
   ],
 
   // Education Section
@@ -217,54 +232,54 @@ export const fallbackData = {
 achievements: [
   {
     _id: "1",
-    title: "Hackathon Winner",
-    description: "Won first place in national level hackathon with innovative solution",
-    date: "2024",
+    title: "INTERNSHALA TRAININGS",
+    description: "Completed hands-on training in web development, building responsive websites using HTML, CSS, and JavaScript.",
+    date: "2025",
     icon: "Trophy",
-    color: "#f59e0b",
-    badge: "🏆 1st Place",
-    category: "Competition",
-    organization: "Tech Hackathon 2024",
-    certificateLink: "https://example.com/certificate1. pdf", // ✅ ADD THIS
+    color: "#008bcd",
+    badge: "🌟100%",
+    category: "Web Development",
+    organization: "Internshala",
+    certificateLink: "https://drive.google.com/file/d/1O-F3D2vonQBGcxIozohlHEfriG133AUv/view?usp=sharing", // ✅ ADD THIS
     order: 1
   },
-  {
-    _id: "2",
-    title: "Google Cloud Certified",
-    description: "Associate Cloud Engineer - Demonstrated expertise in Google Cloud Platform",
-    date: "2024",
-    icon: "Award",
-    color: "#3b82f6",
-    badge: "✅ Certified",
-    category: "Certification",
-    organization: "Google",
-    certificateLink: "https://example.com/certificate2.pdf", // ✅ ADD THIS
-    order: 2
-  },
-  {
-    _id: "3",
-    title: "Open Source Contributor",
-    description:  "Active contributor with 100+ contributions across multiple projects",
-    date: "2023-24",
-    icon: "Github",
-    color: "#a855f7",
-    badge: "💻 Active",
-    category: "Other",
-    certificateLink: "", // ✅ Optional - leave empty if no certificate
-    order: 3
-  },
-  {
-    _id: "4",
-    title: "Open Source Contributor",
-    description:  "Active contributor with 100+ contributions across multiple projects",
-    date: "2023-24",
-    icon: "Github",
-    color: "#a855f7",
-    badge: "💻 Active",
-    category: "Other",
-    certificateLink: "", // ✅ Optional - leave empty if no certificate
-    order: 4
-  }
+  // {
+  //   _id: "2",
+  //   title: "Google Cloud Certified",
+  //   description: "Associate Cloud Engineer - Demonstrated expertise in Google Cloud Platform",
+  //   date: "2024",
+  //   icon: "Award",
+  //   color: "#3b82f6",
+  //   badge: "✅ Certified",
+  //   category: "Certification",
+  //   organization: "Google",
+  //   certificateLink: "https://example.com/certificate2.pdf", // ✅ ADD THIS
+  //   order: 2
+  // },
+  // {
+  //   _id: "3",
+  //   title: "Open Source Contributor",
+  //   description:  "Active contributor with 100+ contributions across multiple projects",
+  //   date: "2023-24",
+  //   icon: "Github",
+  //   color: "#a855f7",
+  //   badge: "💻 Active",
+  //   category: "Other",
+  //   certificateLink: "", // ✅ Optional - leave empty if no certificate
+  //   order: 3
+  // },
+  // {
+  //   _id: "4",
+  //   title: "Open Source Contributor",
+  //   description:  "Active contributor with 100+ contributions across multiple projects",
+  //   date: "2023-24",
+  //   icon: "Github",
+  //   color: "#a855f7",
+  //   badge: "💻 Active",
+  //   category: "Other",
+  //   certificateLink: "", // ✅ Optional - leave empty if no certificate
+  //   order: 4
+  // }
 ],
 
   // Profile Status
